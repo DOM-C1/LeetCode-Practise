@@ -31,7 +31,7 @@ Constraints:
 s consists of only English letters and spaces ' '.
 There will be at least one word in s.'''
 
-def solution(s:str,alphabet = 'qwertyuiopasdfghjklzxcvbnm') -> str:
+def solution(s:str,alphabet = 'qwertyuiopasdfghjklzxcvbnm') -> int:
     alphabet_chars = ''.join(([letter for letter in s if letter.lower() in alphabet or letter == ' ']))
     return len(alphabet_chars.split()[-1])
 
