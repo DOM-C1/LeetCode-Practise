@@ -39,18 +39,16 @@ def create_max_num(numbers:list) -> str:
 
 def get_next_largest_digit(nums: list,first_digits:list) -> list:
     highest_first_digit = max([int(str(num)[0]) for num in nums])
-    print(highest_first_digit)
     return [num for num in nums if int(str(num)[0]) == highest_first_digit]
    
 def main(nums:list) -> int:
     all_first_digits = [str(num)[0] for num in nums]
     l_num = ''
-    for _ in nums:
+    while nums:
        numbers = get_next_largest_digit(nums,all_first_digits)
        nums = [num for num in nums if int(num) not in numbers] 
        l_num += create_max_num(numbers)
-       print(l_num)
-      
+     
        
 
     return l_num
