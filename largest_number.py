@@ -37,20 +37,17 @@ Constraints:
 def create_max_num(numbers:list) -> str:
     return str(max([int(''.join(map(str,permutation))) for permutation in permutations(numbers)]))
 
-def get_next_largest_digit(nums: list,first_digits:list) -> list:
+def get_next_largest_digit(nums: list) -> list:
     highest_first_digit = max([int(str(num)[0]) for num in nums])
     return [num for num in nums if int(str(num)[0]) == highest_first_digit]
    
 def main(nums:list) -> int:
-    all_first_digits = [str(num)[0] for num in nums]
     l_num = ''
     while nums:
-       numbers = get_next_largest_digit(nums,all_first_digits)
+       numbers = get_next_largest_digit(nums)
        nums = [num for num in nums if int(num) not in numbers] 
        l_num += create_max_num(numbers)
      
-       
-
     return l_num
 
 print(main([3,30,34,5,9]))
