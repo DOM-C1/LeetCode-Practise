@@ -36,5 +36,26 @@ Constraints:
 
 """Plan: 
 we can find every three sums that happens in the range |105| which is 211^3 operations. This is better than 3000^3 
-operations which would happen if we tried every combination of three numbers in nums. However this doesnt feel particuarly 
-fast still. Can always refine it."""
+operations which would happen if we tried every combination of three numbers in nums.
+
+functions: find_every_three_sum, main"""
+
+
+def find_every_three_sum() -> list:
+    three_sums = []
+    for i in range(-105,106):
+        for j in range(-105,106):
+            for k in range(-105,106):
+                if i+j+k == 0:
+                    three_sums.append((i,j,k))
+    return three_sums
+def main(nums:list):
+    three_sum = []
+    every_three_sum = find_every_three_sum()
+    for num1,num2,num3 in every_three_sum:
+        if num1 in nums and num2 in nums and num3 in nums:
+            three_sum.append([num1,num2,num3])
+    return three_sum if three_sum else [0,0,0]
+
+
+
