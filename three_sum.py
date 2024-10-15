@@ -42,12 +42,12 @@ functions: find_every_three_sum, main"""
 
 
 def find_every_three_sum() -> list:
-    three_sums = []
+    three_sums = [[0,0,0]]
     for i in range(-105,106):
         for j in range(-105,106):
             for k in range(-105,106):
-                if i+j+k == 0:
-                    three_sums.append((i,j,k))
+                if i+j+k == 0 and i != j and j != k and i != k:
+                    three_sums.append(set([i,j,k]))
     return three_sums
 def main(nums:list):
     three_sum = []
@@ -55,7 +55,7 @@ def main(nums:list):
     for num1,num2,num3 in every_three_sum:
         if num1 in nums and num2 in nums and num3 in nums:
             three_sum.append([num1,num2,num3])
-    return three_sum if three_sum else [0,0,0]
+    return three_sum
 
 
 
