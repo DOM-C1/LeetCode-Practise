@@ -1,13 +1,37 @@
 """Given an integer n, return the number of trailing zeroes in n!."""
 
-"""Note that the zeroes come from either 2*k,5*k"""
+
 import math
-def is_multiple_of_2_or_5(num:int)->bool:
-    return (num%5==0 or num%2==0) and num%10 != 0
-def is_multiple_of_10(num:int)->bool:
-    return num%10==0
-def main(num:int)-> int:
+def count_zeroes(num:int)->int:
     count =0
-    for number in range(math.factorial(num)):
-        if is_multiple_of_2_or_5(number):
+    # NAIVE APPROACH
+    num = str(math.factorial(num))
+    for char in num[::-1]:
+        if char != '0':
+            return count
+        count += 1
+    return count
+
+def count_zeroes2(num:int)->int:
+
+    multiples = {5:0,2:0,10:0}
+
+    for i in range(2,num+1):
+        if i %2 == 0 and i%5 != 0:
+            multiples[2] += 1
+        if i%5 == 0 and i%2 != 0:
+            k=i
+            while k%5 == 0:
+                multiples[5] += 1
+                k /= 5
+        
+           
+        if i%10 == 0:
+            k=i
+            while k%10 ==0:
+                multiples[10] += 1
+                k /= 10
+   
             
+    return min(multiples[2],multiples[5]) + multiples[10]
+  
